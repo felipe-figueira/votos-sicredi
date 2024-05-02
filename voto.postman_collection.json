@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "7e4a0aad-6fa4-45b9-9107-e13f405467ab",
+		"name": "voto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10308926"
+	},
+	"item": [
+		{
+			"name": "Adicionar Pauta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Pauta\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pauta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Abrir sessão de votação na pauta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/sessao-voto?descricaoPauta=Pauta&tempoEmMinutos=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessao-voto"
+					],
+					"query": [
+						{
+							"key": "descricaoPauta",
+							"value": "Pauta"
+						},
+						{
+							"key": "tempoEmMinutos",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar associado",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-vetus-api-token",
+						"value": "0gwq+NSU+yePrZKXRHTe+kHdjxl4ygQV3rfDMyPAyB95ghAnzA7DYyJvBol8SOG70WPo5VxKB8w=",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "Y@5mW8ENR$#6iDAs2t@o&T6z",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"56325258053\",\n    \"name\": \"Richarlison\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/associado",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "votar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Pauta\",\n    \"vote\": {\n        \"cpf\": \"56325258053\",\n        \"vote\": \"SIM\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pauta/voto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta",
+						"voto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consutar resultado pauta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pauta/resultado?descricaoPauta=Pauta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta",
+						"resultado"
+					],
+					"query": [
+						{
+							"key": "descricaoPauta",
+							"value": "Pauta"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
